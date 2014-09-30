@@ -1,0 +1,15 @@
+<resources>
+
+    <style name="Theme.Root" parent="Theme.Base.AppCompat.Light.DarkActionBar" />
+
+    <style name="Theme.Base" parent="Theme.Root">
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <style name="Theme.Base.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+</resources>
