@@ -1,26 +1,29 @@
-package es.indra.movilidad.ui.app.base;
+package es.indra.movilidad.app.base;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 
+import javax.inject.Inject;
+
 import es.indra.movilidad.R;
-import es.indra.movilidad.inject.ObjectGraphProvider;
+import es.indra.movilidad.app.ui.UserController;
+import es.indra.movilidad.inject.GraphRetriever;
 
 /**
  * Created by Alejandro on 19/09/14.
  */
 public abstract class BaseDialogFragment extends DialogFragment implements BackEventListener {
 
+    @Inject
+    UserController userController;
+
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        try {
-            if (activity != null)
-                ((ObjectGraphProvider) activity).getObjectGraph().inject(this);
-        } catch (ClassCastException e) {
-            throw new ClassCastException("Activity must be a subclass of O61Activity or implement ObjectGraphProvider interface!");
-        }
+
+        GraphRetriever.from(activity).inject(this);
+
     }
 
 

@@ -1,22 +1,17 @@
-package es.indra.movilidad.ui.app.base;
+package es.indra.movilidad.app.base;
 
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 
-import es.indra.movilidad.inject.Injector;
+import es.indra.movilidad.inject.GraphRetriever;
 import es.indra.movilidad.inject.ModuleProvider;
-import es.indra.movilidad.inject.ObjectGraphProvider;
-import es.indra.movilidad.ui.modules.BaseActivityModule;
-
-import dagger.ObjectGraph;
+import es.indra.movilidad.app.modules.BaseActivityModule;
 
 /**
  * Created by Alejandro on 19/09/14.
  */
-public class BaseActivity extends ActionBarActivity implements Injector, ObjectGraphProvider, ModuleProvider {
-
-    private ObjectGraph mObjectGraph;
+public class BaseActivity extends ActionBarActivity implements ModuleProvider {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,13 +25,7 @@ public class BaseActivity extends ActionBarActivity implements Injector, ObjectG
     }
 
     private void initDaggerAndInject() {
-        mObjectGraph = ((ObjectGraphProvider) getApplicationContext()).getObjectGraph().plus(getModules());
-        inject(this);
-    }
-
-    @Override
-    public void inject(Object target) {
-        mObjectGraph.inject(target);
+        GraphRetriever.from(this).inject(this);
     }
 
     @Override
@@ -46,8 +35,4 @@ public class BaseActivity extends ActionBarActivity implements Injector, ObjectG
         };
     }
 
-    @Override
-    public ObjectGraph getObjectGraph() {
-        return mObjectGraph;
-    }
 }

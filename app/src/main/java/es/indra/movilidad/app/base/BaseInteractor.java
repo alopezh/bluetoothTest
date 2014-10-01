@@ -1,11 +1,10 @@
-package es.indra.movilidad.ui.app.base;
+package es.indra.movilidad.app.base;
 
 import android.util.Log;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import es.indra.movilidad.inject.Injector;
 
 import javax.inject.Inject;
 
@@ -19,10 +18,6 @@ public abstract class BaseInteractor {
     @Inject
     RequestQueue mRequestQueue;
 
-    protected BaseInteractor(Injector injector) {
-        injector.inject(this);
-    }
-
     private Response.ErrorListener mErrorListener = new Response.ErrorListener() {
         @Override
         public void onErrorResponse(VolleyError volleyError) {
@@ -34,7 +29,5 @@ public abstract class BaseInteractor {
         return mErrorListener;
     }
 
-    public RequestQueue getRequestQueue() {
-        return mRequestQueue;
-    }
+
 }

@@ -1,9 +1,9 @@
-package es.indra.movilidad.ui;
+package es.indra.movilidad.app.ui;
 
 import android.os.Bundle;
 
 import es.indra.movilidad.R;
-import es.indra.movilidad.ui.app.base.BaseActivity;
+import es.indra.movilidad.app.base.BaseActivity;
 
 /**
  * Created by Alejandro on 24/09/14.
