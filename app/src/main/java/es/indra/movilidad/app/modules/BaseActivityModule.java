@@ -26,7 +26,7 @@ public class BaseActivityModule {
 
     private final BaseActivity activity;
 
-    public BaseActivityModule( BaseActivity activity) {
+    public BaseActivityModule( BaseActivity activity ) {
         this.activity = activity;
     }
 

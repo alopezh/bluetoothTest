@@ -2,24 +2,23 @@ package es.indra.movilidad.app.base;
 
 import android.app.Application;
 
-import es.indra.movilidad.inject.ModuleProvider;
-import es.indra.movilidad.inject.modules.AndroidModule;
+import dagger.ObjectGraph;
+import es.indra.movilidad.inject.GraphProvider;
+import es.indra.movilidad.inject.Modules;
+
 
 /**
  * Created by Alejandro on 19/09/14.
  */
-public class BaseApplication extends Application implements ModuleProvider {
+public class BaseApplication extends Application implements GraphProvider {
+
+    private ObjectGraph graph;
 
     @Override
-    public void onCreate() {
-        super.onCreate();
-    }
-
-
-    @Override
-    public Object[] getModules() {
-        return new Object[] {
-             new AndroidModule(this)
-        };
+    public ObjectGraph getGraph() {
+        if (graph == null) {
+            graph = ObjectGraph.create(Modules.listModulesForApplication( BaseApplication.this ));
+        }
+        return graph;
     }
 }
