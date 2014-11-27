@@ -16,6 +16,5 @@ public abstract class BasePresenter {
         return eventBus;
     }
 
-    public abstract void onDestroy();
 
 }

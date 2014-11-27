@@ -6,16 +6,18 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
-import es.indra.movilidad.inject.modules.AndroidModule;
-import es.indra.movilidad.inject.qualifiers.ForActivity;
-import es.indra.movilidad.app.ui.MainActivity;
 import es.indra.movilidad.app.base.BaseActivity;
 import es.indra.movilidad.app.ui.UserController;
+import es.indra.movilidad.app.ui.login.LoginActivity;
+import es.indra.movilidad.app.ui.login.LoginPresenterImpl;
+import es.indra.movilidad.inject.modules.AndroidModule;
+import es.indra.movilidad.inject.qualifiers.ForActivity;
 
 @Module(
         injects = {
                 //AÑADIR LOS FRAGMENTS QUE SE VAYAN CREANDO!!
-                MainActivity.class
+                LoginActivity.class,
+                LoginPresenterImpl.class
 
         },
         addsTo = AndroidModule.class,
